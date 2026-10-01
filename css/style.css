@@ -360,8 +360,9 @@ input, textarea{ font-family:inherit; }
 .feature-card p{ color: var(--charcoal-soft); font-size: 14.5px; }
 
 /* ============================= PROCESS / TIMELINE ============================= */
-.process{ padding: 130px 0; background: var(--charcoal); color: var(--ivory); }
+.process{ padding: 130px 0; background: #900020; color: var(--ivory); }
 .process .section-lead{ color: rgba(246,241,233,0.65); }
+.process .eyebrow{ color: var(--ivory); }
 .timeline{ display:flex; flex-direction:column; }
 .timeline-step{
   display:grid;
@@ -381,9 +382,10 @@ input, textarea{ font-family:inherit; }
   display:inline-block;
   margin: 8px 0 10px;
   font-size: 12px;
+  font-weight:700;
   letter-spacing:.06em;
   text-transform:uppercase;
-  color: var(--clay);
+  color: var(--ivory);
 }
 .timeline-body p{ color: rgba(246,241,233,0.72); font-size: 14.5px; max-width: 620px; }
 
@@ -525,6 +527,7 @@ input, textarea{ font-family:inherit; }
 /* ============================= CONTACT ============================= */
 .contact{ padding: 130px 0; background: var(--charcoal); color: var(--ivory); }
 .contact .section-lead{ color: rgba(246,241,233,0.65); }
+.contact .eyebrow{ color: var(--ivory); }
 .contact-grid{
   display:grid;
   grid-template-columns: 1fr 1fr 1.4fr;
