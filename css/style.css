@@ -19,8 +19,8 @@
   --ivory-deep:    #efe7d9;
   --charcoal:      #221f1c;
   --charcoal-soft: #55504a;
-  --clay:          #b0553a;
-  --clay-deep:     #8f4530;
+  --clay:          #4b0708;
+  --clay-deep:     #350506;
   --olive:         #6b6a4f;
   --line:          rgba(34,31,28,0.12);
   --white:         #fffdfa;
@@ -422,7 +422,7 @@ input, textarea{ font-family:inherit; }
   transition: all .2s ease;
 }
 .calc-option:hover{ border-color: var(--clay); }
-.calc-option.is-selected{ border-color: var(--clay); background: rgba(176,85,58,0.08); color: var(--clay-deep); }
+.calc-option.is-selected{ border-color: var(--clay); background: rgba(75,7,8,0.08); color: var(--clay-deep); }
 
 .calc-range{ display:flex; flex-direction:column; gap: 14px; }
 .calc-range input[type="range"]{ width:100%; accent-color: var(--clay); }
