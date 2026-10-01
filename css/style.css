@@ -162,11 +162,7 @@ input, textarea{ font-family:inherit; }
   transition: filter .3s ease;
 }
 .site-header.is-scrolled .logo-icon img{ filter: none; }
-.logo-icon-badge{
-  background: var(--white);
-  border-radius: 7px;
-  padding: 6px 10px;
-}
+.site-footer .logo-icon img{ filter: brightness(0) invert(1); }
 .logo-mark{
   font-family: var(--font-display);
   font-size: 20px;
