@@ -360,7 +360,7 @@ input, textarea{ font-family:inherit; }
 .feature-card p{ color: var(--charcoal-soft); font-size: 14.5px; }
 
 /* ============================= PROCESS / TIMELINE ============================= */
-.process{ padding: 130px 0; background: #900020; color: var(--ivory); }
+.process{ padding: 130px 0; background: var(--charcoal); color: var(--ivory); }
 .process .section-lead{ color: rgba(246,241,233,0.65); }
 .process .eyebrow{ color: var(--ivory); }
 .timeline{ display:flex; flex-direction:column; }
