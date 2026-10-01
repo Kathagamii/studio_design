@@ -331,16 +331,18 @@ input, textarea{ font-family:inherit; }
 .trust-label{ font-size: 13px; color: var(--charcoal-soft); }
 
 /* ============================= PHILOSOPHY ============================= */
-.philosophy{ padding: 130px 0; background: var(--ivory-deep); }
+.philosophy{ padding: 130px 0; background: var(--clay); color: var(--white); }
+.philosophy .eyebrow{ color: var(--ivory); }
 .philosophy-inner{ max-width: 760px; margin:0 auto; text-align:center; }
 .philosophy-quote{
   font-family: var(--font-display);
   font-style: italic;
+  color: var(--white);
   font-size: clamp(24px, 3.4vw, 34px);
   line-height:1.4;
   margin:0;
 }
-.philosophy-sign{ margin-top: 26px; color: var(--charcoal-soft); font-size:14px; letter-spacing:.06em; text-transform:uppercase; }
+.philosophy-sign{ margin-top: 26px; color: rgba(255,253,250,0.72); font-size:14px; letter-spacing:.06em; text-transform:uppercase; }
 
 /* ============================= FEATURE CARDS ============================= */
 .services{ padding: 130px 0; }
