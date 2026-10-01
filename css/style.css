@@ -392,7 +392,7 @@ input, textarea{ font-family:inherit; }
 .calc-wrap{ display:grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items:start; }
 .calc-head{ margin-bottom:0; }
 .calc-form{
-  background: var(--white);
+  background: transparent;
   border: 1px solid var(--line);
   padding: 40px;
   border-radius: var(--radius);
@@ -412,10 +412,10 @@ input, textarea{ font-family:inherit; }
 .calc-option{
   flex:1;
   min-width: 130px;
-  padding: 16px 18px;
+  padding: 16px 22px;
   border: 1px solid var(--line);
   background: transparent;
-  border-radius: var(--radius);
+  border-radius: 999px;
   font-size: 14px;
   font-weight:600;
   text-align:left;
