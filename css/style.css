@@ -1,8 +1,18 @@
 /* ===================================================================
    EXCLUSIVE PROJECT — дизайн-студия интерьеров
    Палитра: тёплая слоновая кость + графитовый текст + акцент "глина"
-   Шрифты: Fraunces (заголовки) / Manrope (текст)
+   Шрифты: Playfair Display (заголовки) / Manrope (текст)
+   Leotaro — кастомный шрифт студии, подключён ниже, используется
+   только в заголовке hero (assets/fonts/Leotaro-Regular.otf)
    =================================================================== */
+
+@font-face{
+  font-family: "Leotaro";
+  src: url("../assets/fonts/Leotaro-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root{
   --ivory:        #f6f1e9;
@@ -15,7 +25,7 @@
   --line:          rgba(34,31,28,0.12);
   --white:         #fffdfa;
 
-  --font-display: "Bodoni Moda", Georgia, serif;
+  --font-display: "Playfair Display", Georgia, serif;
   --font-body: "Manrope", "Segoe UI", sans-serif;
 
   --container: 1180px;
@@ -275,6 +285,7 @@ input, textarea{ font-family:inherit; }
   margin-bottom: 26px;
 }
 .hero-title{
+  font-family: "Leotaro", var(--font-display);
   font-size: clamp(32px, 5.6vw, 62px);
   line-height: 1.26;
   font-weight: 400;
