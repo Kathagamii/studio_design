@@ -113,6 +113,29 @@
   applyFilter("all");
 
   /* ---------------------------------------------------------------
+     Portfolio card photo galleries (prev/next + dots)
+  --------------------------------------------------------------- */
+  document.querySelectorAll(".portfolio-gallery").forEach(function (gallery) {
+    var imgs = gallery.querySelectorAll(".gallery-img");
+    var dots = gallery.querySelectorAll(".dot");
+    var current = 0;
+
+    function show(index) {
+      current = (index + imgs.length) % imgs.length;
+      imgs.forEach(function (img, i) { img.classList.toggle("is-active", i === current); });
+      dots.forEach(function (dot, i) { dot.classList.toggle("is-active", i === current); });
+    }
+
+    var prevBtn = gallery.querySelector(".gallery-prev");
+    var nextBtn = gallery.querySelector(".gallery-next");
+    if (prevBtn) prevBtn.addEventListener("click", function (e) { e.preventDefault(); show(current - 1); });
+    if (nextBtn) nextBtn.addEventListener("click", function (e) { e.preventDefault(); show(current + 1); });
+    dots.forEach(function (dot, i) {
+      dot.addEventListener("click", function (e) { e.preventDefault(); show(i); });
+    });
+  });
+
+  /* ---------------------------------------------------------------
      Price calculator / lead form
      NOTE: rates below are placeholders for layout purposes only —
      replace with real studio pricing before launch (see TODO in
