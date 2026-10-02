@@ -133,6 +133,27 @@
     dots.forEach(function (dot, i) {
       dot.addEventListener("click", function (e) { e.preventDefault(); show(i); });
     });
+
+    // Swipe support (touch devices)
+    var touchStartX = 0;
+    var touchStartY = 0;
+    var touching = false;
+    gallery.addEventListener("touchstart", function (e) {
+      if (e.touches.length !== 1) return;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      touching = true;
+    }, { passive: true });
+    gallery.addEventListener("touchend", function (e) {
+      if (!touching) return;
+      touching = false;
+      var touch = e.changedTouches[0];
+      var dx = touch.clientX - touchStartX;
+      var dy = touch.clientY - touchStartY;
+      if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+      if (dx < 0) show(current + 1);
+      else show(current - 1);
+    });
   });
 
   /* ---------------------------------------------------------------
