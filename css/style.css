@@ -652,8 +652,16 @@ input, textarea{ font-family:inherit; }
   .cards-grid{ grid-template-columns: 1fr; }
   .portfolio-grid{ grid-template-columns: 1fr; }
   .trust-grid{ grid-template-columns: 1fr 1fr; gap: 24px; }
-  .hero-content{ padding-top: 140px; padding-bottom: 80px; }
   .partners-row{ gap: 24px; }
+
+  .hero{ padding: 104px 0 28px; min-height: 100svh; }
+  .city-toggle{ margin-bottom: 18px; }
+  .hero-eyebrow{ margin-bottom: 14px; letter-spacing: .2em; }
+  .hero-title{ line-height: 1.18; }
+  .hero-sub{ margin-top: 14px; font-size: 14.5px; }
+  .hero-actions{ margin-top: 20px; gap: 10px; }
+  .hero-actions .btn{ padding: 13px 24px; font-size: 13px; }
+  .scroll-cue{ display:none; }
 }
 
 /* mobile nav open state */
