@@ -11,6 +11,35 @@ python -m http.server 8000
 
 и открыть `http://localhost:8000`.
 
+## Где лежит сайт (хостинг)
+
+Сайт развёрнут на Yandex Object Storage (бакет `exclusiveproject76-site`),
+открывается в России без VPN:
+
+**https://exclusiveproject76-site.website.yandexcloud.net/**
+
+Это временный адрес без своего домена («Route A» — быстрый вариант без
+настройки сертификата/DNS). Когда будет куплен домен (например, тот же
+exclusiveproject.ru) — переедем на полноценный вариант с API Gateway и
+HTTPS на своём домене.
+
+### Как обновить сайт после правок
+
+Нужен настроенный профиль AWS CLI `yandex-studio` (ключ доступа сервисного
+аккаунта с ролью `storage.editor`, см. `aws configure set ... --profile
+yandex-studio`). Дальше — залить файлы заново:
+
+```bash
+aws s3 sync . s3://exclusiveproject76-site \
+  --endpoint-url https://storage.yandexcloud.net --profile yandex-studio \
+  --acl public-read \
+  --exclude ".git/*" --exclude "*.md"
+```
+
+Бакет сам по себе закрыт (нет публичного ACL на уровне бакета — прав
+не хватило), поэтому `--acl public-read` обязателен при каждой заливке,
+иначе новые/изменённые файлы будут недоступны.
+
 ## Что нужно доделать перед публикацией
 
 1. **Логотип.** Сейчас в шапке и футере — текстовый вордмарк «EXCLUSIVE PROJECT».
