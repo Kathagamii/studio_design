@@ -163,90 +163,94 @@
      index.html #calculator).
   --------------------------------------------------------------- */
   var calcForm = document.getElementById("calcForm");
-  var calcSteps = calcForm.querySelectorAll(".calc-step");
-  var areaRange = document.getElementById("areaRange");
-  var areaOutput = document.getElementById("areaOutput");
-  var calcResultValue = document.getElementById("calcResultValue");
+  if (calcForm) {
+    var calcSteps = calcForm.querySelectorAll(".calc-step");
+    var areaRange = document.getElementById("areaRange");
+    var areaOutput = document.getElementById("areaOutput");
+    var calcResultValue = document.getElementById("calcResultValue");
 
-  var calcState = { type: null, area: parseInt(areaRange.value, 10), scope: null };
+    var calcState = { type: null, area: parseInt(areaRange.value, 10), scope: null };
 
-  var RATES_PER_SQM = {
-    design: [1800, 2500],
-    supervision: [2500, 3400],
-    turnkey: [4200, 6000]
-  };
+    var RATES_PER_SQM = {
+      design: [1800, 2500],
+      supervision: [2500, 3400],
+      turnkey: [4200, 6000]
+    };
 
-  function goToStep(n) {
-    calcSteps.forEach(function (step) {
-      step.classList.toggle("is-active", parseInt(step.getAttribute("data-step"), 10) === n);
-    });
-  }
+    var goToStep = function (n) {
+      calcSteps.forEach(function (step) {
+        step.classList.toggle("is-active", parseInt(step.getAttribute("data-step"), 10) === n);
+      });
+    };
 
-  calcForm.querySelectorAll(".calc-options").forEach(function (group) {
-    group.querySelectorAll(".calc-option").forEach(function (opt) {
-      opt.addEventListener("click", function () {
-        group.querySelectorAll(".calc-option").forEach(function (o) { o.classList.remove("is-selected"); });
-        opt.classList.add("is-selected");
-        var key = group.getAttribute("data-group");
-        calcState[key] = opt.getAttribute("data-value");
+    var updateResult = function () {
+      var rate = RATES_PER_SQM[calcState.scope];
+      if (!rate || !calcState.area) {
+        calcResultValue.textContent = "—";
+        return;
+      }
+      var low = Math.round((rate[0] * calcState.area) / 1000) * 1000;
+      var high = Math.round((rate[1] * calcState.area) / 1000) * 1000;
+      calcResultValue.textContent =
+        low.toLocaleString("ru-RU") + " – " + high.toLocaleString("ru-RU") + " ₽";
+    };
 
-        if (key === "type") goToStep(2);
-        if (key === "scope") {
-          updateResult();
-          goToStep(4);
-        }
+    calcForm.querySelectorAll(".calc-options").forEach(function (group) {
+      group.querySelectorAll(".calc-option").forEach(function (opt) {
+        opt.addEventListener("click", function () {
+          group.querySelectorAll(".calc-option").forEach(function (o) { o.classList.remove("is-selected"); });
+          opt.classList.add("is-selected");
+          var key = group.getAttribute("data-group");
+          calcState[key] = opt.getAttribute("data-value");
+
+          if (key === "type") goToStep(2);
+          if (key === "scope") {
+            updateResult();
+            goToStep(4);
+          }
+        });
       });
     });
-  });
 
-  areaRange.addEventListener("input", function () {
-    calcState.area = parseInt(areaRange.value, 10);
-    areaOutput.textContent = calcState.area + " м²";
-  });
-
-  calcForm.querySelectorAll("[data-next]").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var current = parseInt(btn.closest(".calc-step").getAttribute("data-step"), 10);
-      goToStep(current + 1);
+    areaRange.addEventListener("input", function () {
+      calcState.area = parseInt(areaRange.value, 10);
+      areaOutput.textContent = calcState.area + " м²";
     });
-  });
-  calcForm.querySelectorAll("[data-back]").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var current = parseInt(btn.closest(".calc-step").getAttribute("data-step"), 10);
-      goToStep(Math.max(1, current - 1));
-    });
-  });
 
-  function updateResult() {
-    var rate = RATES_PER_SQM[calcState.scope];
-    if (!rate || !calcState.area) {
-      calcResultValue.textContent = "—";
-      return;
-    }
-    var low = Math.round((rate[0] * calcState.area) / 1000) * 1000;
-    var high = Math.round((rate[1] * calcState.area) / 1000) * 1000;
-    calcResultValue.textContent =
-      low.toLocaleString("ru-RU") + " – " + high.toLocaleString("ru-RU") + " ₽";
+    calcForm.querySelectorAll("[data-next]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var current = parseInt(btn.closest(".calc-step").getAttribute("data-step"), 10);
+        goToStep(current + 1);
+      });
+    });
+    calcForm.querySelectorAll("[data-back]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var current = parseInt(btn.closest(".calc-step").getAttribute("data-step"), 10);
+        goToStep(Math.max(1, current - 1));
+      });
+    });
+
+    calcForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      // TODO(студия): подключить реальную отправку заявки (Telegram-бот / email / CRM).
+      alert("Заявка получена! Мы свяжемся с вами в течение рабочего дня.\n\n(Демо-форма — подключите приём заявок в js/main.js)");
+      calcForm.reset();
+      goToStep(1);
+      calcForm.querySelectorAll(".calc-option").forEach(function (o) { o.classList.remove("is-selected"); });
+    });
   }
-
-  calcForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    // TODO(студия): подключить реальную отправку заявки (Telegram-бот / email / CRM).
-    alert("Заявка получена! Мы свяжемся с вами в течение рабочего дня.\n\n(Демо-форма — подключите приём заявок в js/main.js)");
-    calcForm.reset();
-    goToStep(1);
-    calcForm.querySelectorAll(".calc-option").forEach(function (o) { o.classList.remove("is-selected"); });
-  });
 
   /* ---------------------------------------------------------------
      Contact form (demo submit — see TODO)
   --------------------------------------------------------------- */
   var contactForm = document.getElementById("contactForm");
-  contactForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    alert("Заявка получена! Мы свяжемся с вами в течение рабочего дня.\n\n(Демо-форма — подключите приём заявок в js/main.js)");
-    contactForm.reset();
-  });
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Заявка получена! Мы свяжемся с вами в течение рабочего дня.\n\n(Демо-форма — подключите приём заявок в js/main.js)");
+      contactForm.reset();
+    });
+  }
 
   /* ---------------------------------------------------------------
      Testimonials slider (simple scroll-by)
@@ -254,12 +258,14 @@
   var testiTrack = document.getElementById("testiTrack");
   var testiPrev = document.getElementById("testiPrev");
   var testiNext = document.getElementById("testiNext");
-  function testiScroll(dir) {
-    var card = testiTrack.querySelector(".testi-card");
-    var step = card ? card.getBoundingClientRect().width + 28 : 400;
-    testiTrack.scrollBy({ left: dir * step, behavior: "smooth" });
+  if (testiTrack && testiPrev && testiNext) {
+    var testiScroll = function (dir) {
+      var card = testiTrack.querySelector(".testi-card");
+      var step = card ? card.getBoundingClientRect().width + 28 : 400;
+      testiTrack.scrollBy({ left: dir * step, behavior: "smooth" });
+    };
+    testiPrev.addEventListener("click", function () { testiScroll(-1); });
+    testiNext.addEventListener("click", function () { testiScroll(1); });
   }
-  testiPrev.addEventListener("click", function () { testiScroll(-1); });
-  testiNext.addEventListener("click", function () { testiScroll(1); });
 
 })();
