@@ -592,15 +592,20 @@ input, textarea{ font-family:inherit; }
 .project-meta-row{ padding: 48px 0 70px; }
 
 /* ============================= ROOM-BY-ROOM BLOCKS ============================= */
-.room-list{ padding-bottom: 60px; }
+.room-list{ padding: 20px 0 60px; }
 .room-grid{
   display:grid;
   grid-template-columns: 1fr 1fr;
   gap: 56px;
   align-items:center;
-  padding: 60px 0;
-  border-top: 1px solid var(--line);
+  padding: 64px;
+  margin: 40px 0;
+  border-radius: var(--radius);
+  background: var(--ivory);
+  box-shadow: inset 0 0 0 1px rgba(48,4,5,0.2), inset 0 0 90px 18px var(--clay-deep);
 }
+.room-grid:first-child{ margin-top:0; }
+.room-grid:last-child{ margin-bottom:0; }
 .room-grid.is-reverse .room-photo{ order: 2; }
 .room-photo{ aspect-ratio: 4/5; overflow:hidden; border-radius: var(--radius); }
 .room-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
@@ -735,7 +740,7 @@ input, textarea{ font-family:inherit; }
   .portfolio-grid{ grid-template-columns: repeat(2,1fr); }
   .about-inner{ grid-template-columns: 1fr; }
   .contact-grid{ grid-template-columns: 1fr; }
-  .room-grid{ grid-template-columns: 1fr; gap: 24px; }
+  .room-grid{ grid-template-columns: 1fr; gap: 24px; padding: 28px; margin: 24px 0; }
   .room-grid.is-reverse .room-photo{ order: 0; }
 }
 
