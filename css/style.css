@@ -546,22 +546,6 @@ input, textarea{ font-family:inherit; }
 .portfolio-link:hover{ color: var(--clay-deep); }
 .portfolio-more{ text-align:center; margin-top: 56px; }
 
-.portfolio-full{ position:relative; overflow:hidden; }
-.portfolio-full::before{
-  content:"";
-  position:absolute;
-  inset: -30px -10% auto -10%;
-  height: 420px;
-  background:
-    radial-gradient(circle at 22% 25%, rgba(48,4,5,0.24) 0%, transparent 55%),
-    radial-gradient(circle at 75% 55%, rgba(34,31,28,0.16) 0%, transparent 55%),
-    radial-gradient(circle at 10% 85%, rgba(107,106,79,0.19) 0%, transparent 50%);
-  filter: blur(42px);
-  pointer-events:none;
-  z-index:0;
-}
-.portfolio-full .wrap{ position:relative; z-index:1; }
-
 /* ============================= PAGE HERO (subpages) ============================= */
 .page-hero{
   position:relative;
@@ -602,47 +586,10 @@ input, textarea{ font-family:inherit; }
 .page-back:hover{ color: var(--white); }
 
 /* ============================= PROJECT INTRO & META ============================= */
-.project-intro{ position:relative; overflow:hidden; padding: 110px 0 0; }
-.project-intro::before{
-  content:"";
-  position:absolute;
-  inset: -40px -10% auto -10%;
-  height: 460px;
-  background:
-    radial-gradient(circle at 28% 30%, rgba(48,4,5,0.25) 0%, transparent 55%),
-    radial-gradient(circle at 78% 65%, rgba(34,31,28,0.17) 0%, transparent 55%),
-    radial-gradient(circle at 12% 80%, rgba(107,106,79,0.19) 0%, transparent 50%);
-  filter: blur(40px);
-  pointer-events:none;
-  z-index:0;
-}
-.project-intro-inner{ position:relative; z-index:1; max-width: 720px; margin:0 auto; text-align:center; }
-.project-intro-inner p{
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(18px, 2vw, 21px);
-  line-height: 1.6;
-  color: var(--charcoal);
-  margin-top: 18px;
-}
-.project-intro-inner p::first-letter{
-  font-family: var(--font-display);
-  font-style: normal;
-  font-size: 56px;
-  line-height: 0.7;
-  float:left;
-  padding: 6px 10px 0 0;
-  color: var(--clay);
-}
-
-.project-meta-row{ padding: 24px 0 80px; }
-.project-meta-row .trust-item{
-  border-top: 1px solid var(--line);
-  padding-top: 20px;
-}
-.project-meta-row .trust-num{ font-size: 30px; }
-.project-meta-row .trust-label{ text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }
+.project-intro{ padding: 80px 0 0; }
+.project-intro-inner{ max-width: 720px; margin:0 auto; text-align:center; }
+.project-intro-inner p{ font-size: 17px; color: var(--charcoal-soft); margin-top: 14px; }
+.project-meta-row{ padding: 48px 0 70px; }
 
 /* ============================= ROOM-BY-ROOM BLOCKS ============================= */
 .room-list{ padding-bottom: 60px; }
@@ -662,24 +609,10 @@ input, textarea{ font-family:inherit; }
 
 /* ============================= PROJECT CTA BAND ============================= */
 .project-cta{
-  position:relative;
-  overflow:hidden;
   padding: 90px 0;
   text-align:center;
   background: var(--ivory-deep);
 }
-.project-cta::before{
-  content:"";
-  position:absolute;
-  inset: -60px -10% -60px -10%;
-  background:
-    radial-gradient(circle at 70% 20%, rgba(48,4,5,0.23) 0%, transparent 55%),
-    radial-gradient(circle at 20% 80%, rgba(34,31,28,0.17) 0%, transparent 55%);
-  filter: blur(44px);
-  pointer-events:none;
-  z-index:0;
-}
-.project-cta .wrap{ position:relative; z-index:1; }
 .project-cta h2{ font-size: clamp(26px, 3.4vw, 36px); }
 .project-cta p{ margin-top:12px; color: var(--charcoal-soft); }
 .project-cta .btn{ margin-top: 28px; }
